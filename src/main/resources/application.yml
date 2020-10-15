@@ -1,0 +1,14 @@
+servers:
+  endpoints:
+    user:
+      uri: "http://localhost:8081"
+      path: "/user"
+    auth:
+      uri: "http://localhost:8081"
+      path: "/auth"
+    book:
+      uri: "http://localhost:8082"
+      path: "/user"
+    review:
+      uri: "http://localhost:8083"
+      path: "/user"

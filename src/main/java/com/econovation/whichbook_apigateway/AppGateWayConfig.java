@@ -7,12 +7,18 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppGateWayConfig {
+
+    ServersProperties serversProperties;
+
+    AppGateWayConfig(ServersProperties serversProperties) {
+        this.serversProperties = serversProperties;
+    }
+
     @Bean
-    public RouteLocator appRouteLocator(RouteLocatorBuilder builder){
-        return builder.routes()
-                .route("/book", r -> r.path("/book").uri("http://localhost:8081"))
-                .route("/user", r -> r.path("/user").uri("http://localhost:8082"))
-                .route("/review", r -> r.path("/review").uri("http://localhost:8083"))
-                .build();
+    public RouteLocator appRouteLocator(RouteLocatorBuilder locatorBuilder){
+        RouteLocatorBuilder.Builder builder =  locatorBuilder.routes();
+        serversProperties.getEndPoints().forEach((key, value) -> builder.route(key, r -> r.path(value.getPath()).uri(value.getUri())));
+
+        return builder.build();
     }
 }
