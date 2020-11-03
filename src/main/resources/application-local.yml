@@ -1,0 +1,35 @@
+servers:
+  endpoints:
+    user:
+      uri: "http://localhost:8081"
+      path: "/user/**"
+    auth:
+      uri: "http://localhost:8081"
+      path: "/auth/**"
+    book:
+      uri: "http://localhost:8082"
+      path: "/book/**"
+    review:
+      uri: "http://localhost:8083"
+      path: "/review/**"
+
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders:
+              - x-requested-with
+              - authorization
+              - content-type
+              - credential
+              - X-AUTH-TOKEN
+              - X-CSRF-TOKEN
+
