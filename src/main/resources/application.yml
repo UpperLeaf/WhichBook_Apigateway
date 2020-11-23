@@ -2,16 +2,16 @@ servers:
   endpoints:
     user:
       uri: "http://172.25.0.3:8080"
-      path: "/user"
+      path: "/user/**"
     auth:
       uri: "http://172.25.0.3:8080"
-      path: "/auth"
+      path: "/auth/**"
     book:
       uri: "http://172.25.0.4:8080"
-      path: "/book"
+      path: "/book/**"
     review:
       uri: "http://172.25.0.5:8080"
-      path: "/review"
+      path: "/review/**"
 
 spring:
   cloud:
